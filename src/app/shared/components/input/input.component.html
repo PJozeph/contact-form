@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="header">
+        <span
+            class="title"
+            [ngClass]="{ error: this.inputFormControl.invalid && this.inputFormControl.touched }"
+            >{{ inputTitle }}</span
+        >
+        <div
+            class="error-message"
+            *ngIf="this.inputFormControl.invalid && this.inputFormControl.touched">
+            {{ errorMessage }}
+        </div>
+    </div>
+    <input
+        class="input"
+        type="text"
+        [formControl]="inputFormControl" />
+</div>

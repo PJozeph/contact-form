@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    .header {
+        .title {
+            color: #8d8d8d;
+            font-family: Poppins;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+        }
+    }
+    input {
+        all: unset;
+        border-bottom: 1px solid #8d8d8d;
+        width: 100%;
+    }
+
+    input.ng-touched.ng-invalid {
+        border-bottom: 1px solid #c70039;
+    }
+
+    .error {
+        color: #c70039 !important;
+    }
+}

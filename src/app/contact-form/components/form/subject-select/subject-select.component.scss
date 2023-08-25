@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 40px;
+
+    .subject {
+        display: flex;
+        align-items: center;
+        height: 20px;
+        gap: 7px;
+        cursor: pointer;
+        color: #011c2a;
+        font-family: Poppins;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px; /* 166.667% */
+    }
+}
+
+i.bi.bi-toggle-off,
+i.bi.bi-toggle-on {
+    font-size: 25px;
+}
+
+h1 {
+    color: #011c2a;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 142.857% */
+}

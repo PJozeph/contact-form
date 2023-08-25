@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #011c2b;
+    border-radius: 10px;
+    width: 491px;
+    height: 647px;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+        margin-left: 40px;
+        .title {
+            color: #fff;
+            font-family: Poppins;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .subtitle {
+            color: #c9c9c9;
+            font-family: Poppins;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .contact-container {
+        margin-top: 110px;
+        .row {
+            margin-left: 40px;
+            color: #fff;
+            font-family: Poppins;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 50px;
+            .content {
+                margin-left: 25px;
+            }
+        }
+    }
+}

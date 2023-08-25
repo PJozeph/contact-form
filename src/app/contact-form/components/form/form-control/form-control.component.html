@@ -1,0 +1,42 @@
+<div class="container">
+    <form
+        class="form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+        <div class="row">
+            <app-input
+                [inputFormControl]="$any(form)?.controls['firstName']"
+                [inputTitle]="'First Name'"></app-input>
+            <app-input
+                [inputFormControl]="$any(form).controls['lastName']"
+                [inputTitle]="'Last Name'"></app-input>
+        </div>
+        <div class="row">
+            <app-input
+                [inputFormControl]="$any(form).controls['email']"
+                [inputTitle]="'Email'">
+            </app-input>
+            <app-input
+                [inputFormControl]="$any(form).controls['phoneNumber']"
+                [inputTitle]="'Phone Number'">
+            </app-input>
+        </div>
+        <div class="row">
+            <app-subject-select></app-subject-select>
+        </div>
+        <div class="message">
+            <app-input
+                [inputFormControl]="$any(form).controls['message']"
+                [inputTitle]="'Message'">
+            </app-input>
+        </div>
+        <div class="row">
+            <button
+                type="submit"
+                class="send-button"
+                [disabled]="form.invalid">
+                Send Message
+            </button>
+        </div>
+    </form>
+</div>
