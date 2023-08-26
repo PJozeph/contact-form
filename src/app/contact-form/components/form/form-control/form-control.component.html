@@ -4,22 +4,30 @@
         [formGroup]="form"
         (ngSubmit)="onSubmit()">
         <div class="row">
-            <app-input
-                [inputFormControl]="$any(form)?.controls['firstName']"
-                [inputTitle]="'First Name'"></app-input>
-            <app-input
-                [inputFormControl]="$any(form).controls['lastName']"
-                [inputTitle]="'Last Name'"></app-input>
+            <div class="user-input">
+                <app-input
+                    [inputFormControl]="$any(form)?.controls['firstName']"
+                    [inputTitle]="'First Name'"></app-input>
+            </div>
+            <div class="user-input">
+                <app-input
+                    [inputFormControl]="$any(form).controls['lastName']"
+                    [inputTitle]="'Last Name'"></app-input>
+            </div>
         </div>
         <div class="row">
-            <app-input
-                [inputFormControl]="$any(form).controls['email']"
-                [inputTitle]="'Email'">
-            </app-input>
-            <app-input
-                [inputFormControl]="$any(form).controls['phoneNumber']"
-                [inputTitle]="'Phone Number'">
-            </app-input>
+            <div class="user-input">
+                <app-input
+                    [inputFormControl]="$any(form).controls['email']"
+                    [inputTitle]="'Email'">
+                </app-input>
+            </div>
+            <div class="user-input">
+                <app-input
+                    [inputFormControl]="$any(form).controls['phoneNumber']"
+                    [inputTitle]="'Phone Number'">
+                </app-input>
+            </div>
         </div>
         <div class="row">
             <app-subject-select></app-subject-select>
@@ -30,11 +38,13 @@
                 [inputTitle]="'Message'">
             </app-input>
         </div>
-        <div class="row">
+        <div
+            class="row"
+            *ngIf="data$ | async as data">
             <button
                 type="submit"
                 class="send-button"
-                [disabled]="form.invalid">
+                [disabled]="data.isSubmitting">
                 Send Message
             </button>
         </div>

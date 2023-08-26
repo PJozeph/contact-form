@@ -8,6 +8,10 @@
         display: flex;
         gap: 25px;
         margin: 25px;
+
+        .user-input {
+            width: 278px;
+        }
     }
 
     button {
