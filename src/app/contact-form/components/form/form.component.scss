@@ -9,8 +9,8 @@
 
     .container {
         display: flex;
-        width: 1196px;
-        height: 647px;
+        max-width: 1196px;
+        max-height: 647px;
         border: 1px solid #011C2B;
         border-radius: 10px;
     
@@ -26,3 +26,10 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        border: none !important;
+    }
+  }

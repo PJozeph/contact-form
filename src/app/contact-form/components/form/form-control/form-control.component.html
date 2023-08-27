@@ -38,19 +38,8 @@
                 [inputTitle]="'Message'">
             </app-input>
         </div>
-        <div
-            class="row"
-            *ngIf="data$ | async as data">
-            <button *ngIf="!    data.isEmailSent"
-                type="submit"
-                class="send-button"
-                [disabled]="data.isSubmitting">
-                Send Message
-            </button>
-            <div *ngIf="data.isEmailSent" class="sent-container">
-                <p class="success">Email Sent!</p>
-                <i class="bi bi-check-square-fill"></i>
-            </div>
+        <div class="row">
+            <app-send-message></app-send-message>
         </div>
     </form>
 </div>

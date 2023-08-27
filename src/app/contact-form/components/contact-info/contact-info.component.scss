@@ -3,8 +3,8 @@
     flex-direction: column;
     background-color: #011c2b;
     border-radius: 10px;
-    width: 491px;
-    height: 647px;
+    max-width: 491px;
+    max-height: 647px;
 
     .header {
         display: flex;

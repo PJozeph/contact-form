@@ -3,6 +3,7 @@
     align-items: center;
     gap: 15px;
     height: 40px;
+    flex-wrap: wrap;
 
     .subject {
         display: flex;
@@ -31,3 +32,9 @@ h1 {
     font-weight: 600;
     line-height: 20px; /* 142.857% */
 }
+@media only screen and (max-width: 600px) {
+    .container {
+        height: 80px;
+    }
+  }
+

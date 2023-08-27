@@ -8,14 +8,15 @@ import { contactFromAction } from 'src/app/contact-form/store/actions';
 import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
 import { FormRequestInterface } from 'src/app/shared/types/form-request.interface';
-import { SubjectSelectComponent } from '../subject-select/subject-select.component';
+import { SendMessageComponent } from './send-message/send-message.component';
+import { SubjectSelectComponent } from './subject-select/subject-select.component';
 
 @Component({
     selector: 'app-form-control',
     templateUrl: './form-control.component.html',
     styleUrls: ['./form-control.component.scss'],
     standalone: true,
-    imports: [InputComponent, MatFormFieldModule, ReactiveFormsModule, CommonModule, SubjectSelectComponent],
+    imports: [InputComponent, MatFormFieldModule, ReactiveFormsModule, CommonModule, SubjectSelectComponent, SendMessageComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlComponent implements OnInit {
