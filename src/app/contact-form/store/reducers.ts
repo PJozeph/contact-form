@@ -5,6 +5,7 @@ import { contactFromAction } from './actions';
 const initialState: ContactFormStateInterface = {
     isSubmitting: false,
     validationErrors: null,
+    emailIsSent: undefined,
 };
 
 const contactFormFeature = createFeature({
@@ -12,10 +13,9 @@ const contactFormFeature = createFeature({
     reducer: createReducer(
         initialState,
         on(contactFromAction.sendForm, state => ({ ...state, isSubmitting: true })),
-        on(contactFromAction.formSentSuccess, state => ({ ...state, isSubmitting: false })),
-        on(contactFromAction.formSentFailure, state => ({ ...state, isSubmitting: false }))
-
+        on(contactFromAction.formSentSuccess, state => ({ ...state, isSubmitting: false, emailIsSent: true })),
+        on(contactFromAction.formSentFailure, state => ({ ...state, isSubmitting: false, emailIsSent: false }))
     ),
 });
 
-export const { name: contactFormFeatureKey, reducer: contactFormReducer, selectIsSubmitting } = contactFormFeature;
+export const { name: contactFormFeatureKey, reducer: contactFormReducer, selectIsSubmitting, selectEmailIsSent } = contactFormFeature;

@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import { contactFromAction } from 'src/app/contact-form/store/actions';
-import { selectIsSubmitting } from 'src/app/contact-form/store/reducers';
+import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
 import { FormRequestInterface } from 'src/app/shared/types/form-request.interface';
 import { SubjectSelectComponent } from '../subject-select/subject-select.component';
@@ -23,10 +23,15 @@ export class FormControlComponent implements OnInit {
 
     data$ = combineLatest({
         isSubmitting: this.store.select(selectIsSubmitting),
+        isEmailSent: this.store.select(selectEmailIsSent),
     });
 
     ngOnInit(): void {
         this.data$.subscribe(console.log);
+    }
+
+    public onSubjectSelect(subject: string): void {
+        this.form.patchValue({ subject });
     }
 
     public form = this.formBuilder.nonNullable.group({
@@ -35,7 +40,7 @@ export class FormControlComponent implements OnInit {
         email: ['', [Validators.email, Validators.required]],
         phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
         message: ['', Validators.required],
-        subject: ['', Validators.required],
+        subject: ['Lets work together', Validators.required],
     });
 
     public onSubmit() {

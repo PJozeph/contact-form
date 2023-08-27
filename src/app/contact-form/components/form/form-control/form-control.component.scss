@@ -38,5 +38,18 @@
         margin-top: 20px;
         margin-left: 25px;
     }
+
+    .sent-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-family: Poppins;
+        font-size: 16px;
+    }
+
+    i.bi.bi-check-square-fill {
+        color: #00ff00;
+    }
 }
 

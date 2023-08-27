@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-subject-select',
@@ -10,6 +10,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubjectSelectComponent {
+
+    @Output() selectedSubjectEvent = new EventEmitter<string>();
+
     subjects: string[] = ['Lets work together', 'Hey', 'I want to build a website', 'I need you to add a new feature'];
 
     public selectedSubject: number = 0;
@@ -20,5 +23,6 @@ export class SubjectSelectComponent {
 
     public selectSubject(index: number): void {
         this.selectedSubject = index;
+        this.selectedSubjectEvent.emit(this.subjects[index]);
     } 
 }

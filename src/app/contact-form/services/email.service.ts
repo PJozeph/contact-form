@@ -11,6 +11,5 @@ export class EmailService {
   constructor(private http: HttpClient) { }
 
   sendEmail(formRequest: FormRequestInterface) : Observable<any> {
-    return this.http.get("")
-  } 
+    return of(" sent")  } 
 }
