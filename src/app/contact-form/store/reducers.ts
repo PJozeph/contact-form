@@ -12,7 +12,7 @@ const contactFormFeature = createFeature({
     name: 'contactForm',
     reducer: createReducer(
         initialState,
-        on(contactFromAction.sendForm, state => ({ ...state, isSubmitting: true })),
+        on(contactFromAction.sendForm, state => ({ ...state, isSubmitting: true, emailIsSent: true })),
         on(contactFromAction.formSentSuccess, state => ({ ...state, isSubmitting: false, emailIsSent: true })),
         on(contactFromAction.formSentFailure, state => ({ ...state, isSubmitting: false, emailIsSent: false }))
     ),
