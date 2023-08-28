@@ -19,17 +19,13 @@ import { SubjectSelectComponent } from './subject-select/subject-select.componen
     imports: [InputComponent, MatFormFieldModule, ReactiveFormsModule, CommonModule, SubjectSelectComponent, SendMessageComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormControlComponent implements OnInit {
+export class FormControlComponent {
     constructor(private formBuilder: FormBuilder, private store: Store) {}
 
     data$ = combineLatest({
         isSubmitting: this.store.select(selectIsSubmitting),
         isEmailSent: this.store.select(selectEmailIsSent),
     });
-
-    ngOnInit(): void {
-        this.data$.subscribe(console.log);
-    }
 
     public onSubjectSelect(subject: string): void {
         this.form.patchValue({ subject });

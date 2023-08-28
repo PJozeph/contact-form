@@ -4,12 +4,12 @@ import { Observable, of } from 'rxjs';
 import { FormRequestInterface } from 'src/app/shared/types/form-request.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class EmailService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  sendEmail(formRequest: FormRequestInterface) : Observable<any> {
-    return of(" sent")  } 
+    sendEmail(formRequest: FormRequestInterface): Observable<any> {
+        return this.http.post('http://localhost:3000/email', formRequest);
+    }
 }
