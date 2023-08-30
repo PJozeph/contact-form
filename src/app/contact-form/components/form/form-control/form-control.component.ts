@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Store } from '@ngrx/store';
-import { combineLatest } from 'rxjs';
+import { combineLatest, map, Observable, of, startWith } from 'rxjs';
 import { contactFromAction } from 'src/app/contact-form/store/actions';
 import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
@@ -19,8 +19,16 @@ import { SubjectSelectComponent } from './subject-select/subject-select.componen
     imports: [InputComponent, MatFormFieldModule, ReactiveFormsModule, CommonModule, SubjectSelectComponent, SendMessageComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormControlComponent {
+export class FormControlComponent implements OnInit {
     constructor(private formBuilder: FormBuilder, private store: Store) {}
+    isValid$: Observable<boolean> = of(false);
+
+    ngOnInit(): void {
+        this.isValid$ = this.form.valueChanges.pipe(
+            startWith(false),
+            map(() => this.form.valid)
+        );
+    }
 
     data$ = combineLatest({
         isSubmitting: this.store.select(selectIsSubmitting),

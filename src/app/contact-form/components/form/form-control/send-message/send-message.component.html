@@ -1,5 +1,6 @@
 <div *ngIf="data$ | async as data">
     <button *ngIf="data.isEmailSent === undefined"
+        [disabled]="!isFormValid"
         type="submit"
         class="send-button">
         Send Message

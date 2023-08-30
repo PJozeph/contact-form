@@ -39,7 +39,7 @@
             </app-input>
         </div>
         <div class="row send-cta">
-            <app-send-message [contactFromGroup]="form"></app-send-message>
+            <app-send-message [isFormValid]="isValid$ |async"></app-send-message>
         </div>
     </form>
 </div>

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
@@ -15,7 +14,7 @@ import { selectEmailIsSent, selectEmailSentSuccess, selectIsSubmitting } from 's
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendMessageComponent {
-    @Input() contactFromGroup: FormGroup | null = null;
+    @Input() isFormValid: boolean | null = false;
 
     constructor(private store: Store) {}
 
