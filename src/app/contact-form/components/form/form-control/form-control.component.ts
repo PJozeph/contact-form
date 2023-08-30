@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Store } from '@ngrx/store';
-import { combineLatest, map, Observable, of, startWith } from 'rxjs';
+import { combineLatest, map, Observable, of, startWith, tap } from 'rxjs';
 import { contactFromAction } from 'src/app/contact-form/store/actions';
-import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
+import { selectEmailSentSuccess } from 'src/app/contact-form/store/reducers';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
 import { FormRequestInterface } from 'src/app/shared/types/form-request.interface';
 import { SendMessageComponent } from './send-message/send-message.component';
@@ -31,8 +31,7 @@ export class FormControlComponent implements OnInit {
     }
 
     data$ = combineLatest({
-        isSubmitting: this.store.select(selectIsSubmitting),
-        isEmailSent: this.store.select(selectEmailIsSent),
+        emailSentSuccess: this.store.select(selectEmailSentSuccess).pipe(tap(() => this.form.reset())),
     });
 
     public onSubjectSelect(subject: string): void {
