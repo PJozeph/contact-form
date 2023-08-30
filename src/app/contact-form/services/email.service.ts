@@ -10,6 +10,6 @@ export class EmailService {
     constructor(private http: HttpClient) {}
 
     sendEmail(formRequest: FormRequestInterface): Observable<any> {
-        return this.http.post('http://localhost:3000/email', formRequest);
+        return this.http.post('https://contact-form-service-bvfckqryxa-uc.a.run.app/email', formRequest);
     }
 }

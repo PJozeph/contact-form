@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -8,12 +8,10 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
     styleUrls: ['./input.component.scss'],
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnInit {
+export class InputComponent {
     @Input() inputFormControl: FormControl = new FormControl();
     @Input() inputTitle: string = '';
     @Input() errorMessage: string = '';
-    ngOnInit(): void {
-      console.log(this.inputFormControl.value)
-    }
 }

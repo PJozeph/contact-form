@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
-import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
+import { selectEmailIsSent, selectEmailSentSuccess, selectIsSubmitting } from 'src/app/contact-form/store/reducers';
 
 @Component({
     selector: 'app-send-message',
@@ -12,6 +12,7 @@ import { selectEmailIsSent, selectIsSubmitting } from 'src/app/contact-form/stor
     styleUrls: ['./send-message.component.css'],
     standalone: true,
     imports: [CommonModule, MatProgressSpinnerModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SendMessageComponent {
     @Input() contactFromGroup: FormGroup | null = null;
@@ -21,5 +22,6 @@ export class SendMessageComponent {
     data$ = combineLatest({
         isSubmitting: this.store.select(selectIsSubmitting),
         isEmailSent: this.store.select(selectEmailIsSent),
+        isEmailSentSuccess: this.store.select(selectEmailSentSuccess),
     });
 }

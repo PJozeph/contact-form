@@ -35,7 +35,7 @@ export class FormControlComponent {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.email, Validators.required]],
-        phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+        phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,}$/)]],
         message: ['', Validators.required],
         subject: ['Lets work together', Validators.required],
     });
